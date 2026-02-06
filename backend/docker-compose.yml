@@ -1,0 +1,61 @@
+version: '3.8'
+
+services:
+  postgres:
+    image: postgres:15-alpine
+    container_name: cellreset-postgres
+    environment:
+      POSTGRES_USER: cellreset
+      POSTGRES_PASSWORD: cellreset_dev_password
+      POSTGRES_DB: cellreset_db
+    ports:
+      - '5432:5432'
+    volumes:
+      - postgres_data:/var/lib/postgresql/data
+    networks:
+      - cellreset-network
+
+  redis:
+    image: redis:7-alpine
+    container_name: cellreset-redis
+    ports:
+      - '6379:6379'
+    volumes:
+      - redis_data:/data
+    networks:
+      - cellreset-network
+
+  backend:
+    build:
+      context: .
+      dockerfile: Dockerfile
+    container_name: cellreset-backend
+    environment:
+      NODE_ENV: development
+      DB_HOST: postgres
+      DB_PORT: 5432
+      DB_USERNAME: cellreset
+      DB_PASSWORD: cellreset_dev_password
+      DB_DATABASE: cellreset_db
+      REDIS_HOST: redis
+      REDIS_PORT: 6379
+    ports:
+      - '3000:3000'
+    volumes:
+      - ./src:/app/src
+      - ./package.json:/app/package.json
+      - ./tsconfig.json:/app/tsconfig.json
+    depends_on:
+      - postgres
+      - redis
+    networks:
+      - cellreset-network
+    command: npm run start:dev
+
+volumes:
+  postgres_data:
+  redis_data:
+
+networks:
+  cellreset-network:
+    driver: bridge
