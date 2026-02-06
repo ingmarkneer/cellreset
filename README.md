@@ -21,67 +21,79 @@
 
 ## 📊 Statistiken
 
-- **Dateien**: 77+ (Backend + Frontend)
-- **Code-Zeilen**: 5.500+
-- **Commits**: 4
+- **Dateien**: 85+ (Backend + Frontend + Deployment)
+- **Code-Zeilen**: 6.000+
+- **Commits**: 8
 - **Dauer**: Sprint 1-2 (4 Wochen)
 - **Kosten**: 0€ (alles Open Source)
 
+---
+
 ## 🚀 Starten
 
-### Quick-Start (2 Befehle!)
+### Option 1: Lokal (Entwicklung)
+
+**Quick-Start (2 Befehle!)**
 
 ```bash
-# 1. Automatische Installation (Node.js, Docker, Dependencies)
+# 1. Automatische Installation
 ./install.sh
 
-# 2. App starten (Backend + Frontend gleichzeitig)
+# 2. App starten
 ./start.sh
 ```
 
-Das war's! Browser öffnet automatisch auf http://localhost:3001
+→ Browser öffnet auf http://localhost:3001
 
-#### Manueller Start (falls gewünscht):
+**Siehe**: `INSTALLATION.md` für Schritt-für-Schritt Anleitung
 
-```bash
-# Backend starten
-cd backend
-npm run start:dev
+---
 
-# Frontend starten (neues Terminal)
-cd frontend
-npm run dev
-```
+### Option 2: Live im Internet (Production) ⭐
 
-**Backend**: http://localhost:3000/api/v1  
-**Frontend**: http://localhost:3001  
-**Swagger**: http://localhost:3000/api-docs
+**Deployment auf Vercel + Railway** (kostenlos, ~30 Minuten):
 
-Siehe `QUICKSTART.md` für Details.
+1. ✅ Accounts erstellen ([Vercel](https://vercel.com) + [Railway](https://railway.app))
+2. ✅ Code zu GitHub pushen
+3. ✅ Backend auf Railway deployen
+4. ✅ Frontend auf Vercel deployen
+5. ✅ **Fertig!** → App läuft auf `https://cellreset.vercel.app`
+
+**Kosten**: 
+- **0€/Monat** (Free Tier, ausreichend für ~500-1000 Nutzer)
+- ~5-10€/Monat (falls mehr Traffic)
+
+👉 **Siehe `DEPLOYMENT.md` für komplette Anleitung**
+
+---
 
 ## 📁 Projekt-Dateien
 
 ```
 Cellreset/
-├── QUICKSTART.md             # 5-Minuten Setup-Guide ⭐
-├── PROJECT_OVERVIEW.md       # Projekt-Übersicht, Roadmap
-├── SPRINT_1-2_SUMMARY.md     # Sprint-Zusammenfassung
-├── product-spec.md           # Vollständige PRD (1683 Zeilen)
-├── backend/                  # NestJS Backend ✅
-│   ├── src/
-│   │   ├── auth/             # Auth-Modul
-│   │   ├── users/            # Users-Modul
-│   │   └── [8 weitere Module] # Placeholder für Sprint 3+
-│   ├── setup.sh              # Automatisches Setup
+├── README.md ⭐               # Diese Datei
+├── DEPLOYMENT.md ⭐           # Live-Deployment (Vercel + Railway)
+├── INSTALLATION.md            # Lokale Installation (Schritt-für-Schritt)
+├── QUICKSTART.md              # Quick-Start Guide
+├── PROJECT_OVERVIEW.md        # Projekt-Übersicht, Roadmap
+├── product-spec.md            # Vollständige PRD (1683 Zeilen)
+├── install.sh                 # Automatische Installation
+├── start.sh                   # One-Click Start
+├── backend/                   # NestJS Backend ✅
+│   ├── src/auth/              # Auth-Modul
+│   ├── src/users/             # Users-Modul
+│   ├── railway.json           # Railway-Konfiguration
+│   ├── Procfile               # Heroku/Railway Start-Command
+│   ├── setup.sh               # Backend-Setup
 │   └── README.md
-└── frontend/                 # React Frontend ✅
-    ├── src/
-    │   ├── pages/            # 5 Pages (Landing, Login, Register, Dashboard, Profile)
-    │   ├── components/       # 4 UI-Komponenten (Button, Card, Input, Label)
-    │   ├── services/         # 2 Services (auth, user)
-    │   └── lib/              # Store (Zustand), Utils
+└── frontend/                  # React Frontend ✅
+    ├── src/pages/             # 5 Pages
+    ├── src/components/        # UI-Komponenten
+    ├── vercel.json            # Vercel-Konfiguration
     └── README.md
 ```
+
+---
 
 ## 🎯 Tech-Stack
 
@@ -91,7 +103,7 @@ Cellreset/
 | **Build** | Vite | ✅ |
 | **Styling** | Tailwind CSS + shadcn/ui | ✅ |
 | **Routing** | React Router v6 | ✅ |
-| **State** | Zustand (Auth) + TanStack Query | ✅ |
+| **State** | Zustand + TanStack Query | ✅ |
 | **HTTP** | Axios (JWT-Interceptor) | ✅ |
 | **Backend** | NestJS + TypeScript | ✅ |
 | **Database** | PostgreSQL 15 | ✅ |
@@ -100,6 +112,9 @@ Cellreset/
 | **Auth** | JWT (Passport) | ✅ |
 | **API Docs** | Swagger/OpenAPI | ✅ |
 | **Container** | Docker + Docker Compose | ✅ |
+| **Hosting** | Vercel (Frontend) + Railway (Backend) | ✅ |
+
+---
 
 ## ✨ Features
 
@@ -141,66 +156,86 @@ Cellreset/
 
 Siehe `product-spec.md` für vollständige Roadmap (12-16 Wochen MVP).
 
+---
+
 ## 📖 Dokumentation
 
-- **QUICKSTART.md** ⭐ – 5-Minuten Setup-Guide
-- **product-spec.md** – Vollständige Product Spec (1683 Zeilen)
-- **PROJECT_OVERVIEW.md** – Projekt-Übersicht, Roadmap, Nächste Schritte
-- **SPRINT_1-2_SUMMARY.md** – Sprint-Zusammenfassung
-- **backend/README.md** – Backend-Dokumentation (Setup, API, Testing)
-- **frontend/README.md** – Frontend-Dokumentation (Setup, Features, Deployment)
+### Für Deployment:
+- **DEPLOYMENT.md** ⭐ – Live-Deployment auf Vercel + Railway (30 Min)
+- **INSTALLATION.md** – Lokale Installation Schritt-für-Schritt
+
+### Für Entwicklung:
+- **QUICKSTART.md** – Quick-Start Guide (2 Befehle)
+- **backend/README.md** – Backend-Dokumentation (API, Testing)
+- **frontend/README.md** – Frontend-Dokumentation (Features, Deployment)
+
+### Für Planung:
+- **product-spec.md** – Vollständige Product Spec (PRD, 1683 Zeilen)
+- **PROJECT_OVERVIEW.md** – Projekt-Übersicht, Roadmap
+
+---
 
 ## 🎓 Entscheidungen
 
 1. ✅ **Web-App statt Mobile-App** (React statt React Native)
-   - Schnellere Entwicklung (ein Codebase)
-   - Keine App-Store-Freigabe nötig
+   - Schnellere Entwicklung
+   - Keine App-Store-Freigabe
    - Responsive (Desktop + Tablet + Mobile)
-   - PWA-Fähigkeit (später installierbar)
+   - PWA-fähig (später)
 
-2. ✅ **Kosten: 0€** für Entwicklung
-   - Alle Technologien Open Source (React, NestJS, PostgreSQL, etc.)
-   - Nur Hosting-Kosten später (ab ~5€/Monat)
+2. ✅ **Hosting: Vercel + Railway** (statt lokalem Laptop)
+   - Kostenlos bzw. sehr günstig (~0-10€/Monat)
+   - Automatisches Deployment (Git Push → Live)
+   - SSL/HTTPS inklusive
+   - Skalierbar (bis 1000+ Nutzer ohne Probleme)
 
-3. ✅ **Tech-Stack**:
-   - Frontend: React + Vite + Tailwind (modern, schnell)
-   - Backend: NestJS + PostgreSQL (skalierbar, typsicher)
-   - Keine nativen Mobile-Apps nötig (PWA ausreichend)
+3. ✅ **Kosten: 0€** für Entwicklung
+   - Alle Technologien Open Source
+   - Hosting: Free Tier ausreichend für Start
 
-## 🚀 Deployment (später)
+---
 
-**Frontend** (Vercel/Netlify – kostenlos):
+## 🚀 Live-Deployment (30 Min)
+
+**Schritt 1**: Accounts erstellen
+- [Vercel](https://vercel.com) (Frontend)
+- [Railway](https://railway.app) (Backend)
+
+**Schritt 2**: Code zu GitHub pushen
 ```bash
-npm run build
-vercel deploy
+git remote add origin https://github.com/DEIN_USERNAME/cellreset.git
+git push -u origin main
 ```
 
-**Backend** (DigitalOcean/AWS – ab 5€/Monat):
-```bash
-docker-compose up -d
-```
+**Schritt 3**: Backend auf Railway deployen
+- PostgreSQL erstellen
+- GitHub-Repo verbinden
+- Environment-Variablen setzen
+- Domain generieren
 
-Siehe READMEs für Details.
+**Schritt 4**: Frontend auf Vercel deployen
+- GitHub-Repo verbinden
+- `VITE_API_URL` setzen
+- Deployen
+
+**Fertig!** → App läuft auf `https://cellreset.vercel.app`
+
+👉 **Vollständige Anleitung**: `DEPLOYMENT.md`
+
+---
 
 ## 🎯 Nächste Schritte
 
 ### Für Dich (sofort):
 
-1. **Projekt testen**:
-   ```bash
-   cd backend
-   ./setup.sh
-   npm run start:dev
-   
-   # Neues Terminal
-   cd frontend
-   npm install
-   npm run dev
-   ```
+**Option A: Lokal testen**
+```bash
+./install.sh
+./start.sh
+```
 
-2. **Web-App öffnen**: http://localhost:3001
-3. **Registrieren**: Account erstellen
-4. **Dashboard**: Features testen
+**Option B: Live deployen** (empfohlen!)
+→ Siehe `DEPLOYMENT.md` (30 Minuten)
 
 ### Für Sprint 3-4 (nächste 2 Wochen):
 
@@ -217,9 +252,12 @@ Siehe READMEs für Details.
 - Challenge-Start Flow (Programm wählen, Datum)
 - Aktive Challenge Dashboard (Day N, Farb-Tag, Phase)
 
+---
+
 ## ❓ Fragen?
 
-**Setup-Probleme**: Siehe `QUICKSTART.md` Troubleshooting  
+**Deployment-Probleme**: Siehe `DEPLOYMENT.md` Troubleshooting  
+**Setup-Probleme**: Siehe `INSTALLATION.md` Troubleshooting  
 **API-Fragen**: Swagger Docs auf http://localhost:3000/api-docs  
 **Architektur**: Siehe `product-spec.md`  
 
@@ -227,7 +265,7 @@ Siehe READMEs für Details.
 
 **Status**: Sprint 1-2 ✅ Abgeschlossen  
 **Datum**: 2026-02-06  
-**Commits**: 4 (Backend, Frontend, Docs, Quickstart)  
+**Commits**: 8 (Backend, Frontend, Deployment-Configs, Docs)  
 **Nächster Sprint**: 3-4 (Program + Challenge-Engine)
 
-🎉 Bereit zum Starten!
+🎉 Bereit zum Deployen!
