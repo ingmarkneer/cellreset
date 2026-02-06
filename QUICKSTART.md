@@ -1,36 +1,48 @@
 # cellRESET – Schnellstart
 
-## ⚡ Setup in 5 Minuten
+## ⚡ Setup in 2 Befehlen!
 
-### 1. Node.js installieren (falls nicht vorhanden)
+### 1. Installation (alles automatisch)
 
 ```bash
-# macOS (Homebrew)
-brew install node@20
-
-# Oder von https://nodejs.org/
+./install.sh
 ```
 
-### 2. Backend starten
+Das Script installiert automatisch:
+- ✅ Homebrew (falls nicht vorhanden)
+- ✅ Node.js 20 (falls nicht vorhanden)
+- ✅ Docker Desktop (Anleitung, falls nicht vorhanden)
+- ✅ Backend-Dependencies (npm install)
+- ✅ Frontend-Dependencies (npm install)
+- ✅ PostgreSQL + Redis (Docker)
+- ✅ Datenbank-Rollen (Seed)
+- ✅ .env Datei mit sicheren Keys
+
+### 2. App starten
 
 ```bash
+./start.sh
+```
+
+Das war's! Browser öffnet automatisch auf `http://localhost:3001`
+
+---
+
+## 📱 Alternative: Manueller Start
+
+Falls Du Backend + Frontend getrennt starten möchtest:
+
+**Terminal 1 (Backend)**:
+```bash
 cd backend
-./setup.sh
 npm run start:dev
 ```
 
-**Backend läuft auf**: `http://localhost:3000/api/v1`  
-**Swagger API-Docs**: `http://localhost:3000/api-docs`
-
-### 3. Frontend starten (neues Terminal)
-
+**Terminal 2 (Frontend)**:
 ```bash
 cd frontend
-npm install
 npm run dev
 ```
-
-**Frontend läuft auf**: `http://localhost:3001`
 
 ---
 

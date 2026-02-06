@@ -29,20 +29,27 @@
 
 ## 🚀 Starten
 
-### Quick-Start (5 Minuten)
+### Quick-Start (2 Befehle!)
 
 ```bash
-# 1. Node.js installieren (falls nicht vorhanden)
-brew install node@20
+# 1. Automatische Installation (Node.js, Docker, Dependencies)
+./install.sh
 
-# 2. Backend starten
+# 2. App starten (Backend + Frontend gleichzeitig)
+./start.sh
+```
+
+Das war's! Browser öffnet automatisch auf http://localhost:3001
+
+#### Manueller Start (falls gewünscht):
+
+```bash
+# Backend starten
 cd backend
-./setup.sh
 npm run start:dev
 
-# 3. Frontend starten (neues Terminal)
+# Frontend starten (neues Terminal)
 cd frontend
-npm install
 npm run dev
 ```
 
