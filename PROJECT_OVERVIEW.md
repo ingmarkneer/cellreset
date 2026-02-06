@@ -1,6 +1,6 @@
-# cellRESET Mobile App – Projektübersicht
+# cellRESET Web-App – Projektübersicht
 
-## Status: Sprint 1-2 (Foundation + Auth) – Fertig ✅
+## Status: Sprint 1-2 (Foundation + Auth + Frontend) – Fertig ✅
 
 ### Was wurde implementiert?
 
@@ -36,6 +36,37 @@
    - User (id, email, password_hash, status, roles, email_verified)
    - Profile (id, user_id, first_name, last_name, avatar_url, bio, date_of_birth, health_data)
    - Role (id, name, permissions)
+
+**Frontend (React + TypeScript + Vite + Tailwind CSS)**:
+
+1. **Projektstruktur** ✅
+   - React 18 + TypeScript
+   - Vite (Build-Tool, Hot-Reload)
+   - Tailwind CSS + shadcn/ui (UI-Komponenten)
+   - React Router v6 (Routing)
+   - Zustand (Auth-State, persistent)
+   - TanStack Query (Data-Fetching)
+   - Axios (HTTP-Client mit JWT-Interceptor)
+
+2. **Pages** ✅
+   - LandingPage (Übersicht Programm, Features, 4 Phasen)
+   - LoginPage (E-Mail + Passwort)
+   - RegisterPage (E-Mail + Passwort + Consent)
+   - DashboardPage (Übersicht, Quick-Stats, Navigation)
+   - ProfilePage (Profil-CRUD, DSGVO Export/Delete)
+
+3. **UI-Komponenten** ✅
+   - Button (Primary, Secondary, Outline, Ghost, Destructive)
+   - Card (Header, Title, Description, Content, Footer)
+   - Input (Text, E-Mail, Password)
+   - Label
+
+4. **Features** ✅
+   - Auth-Flow (Register, Login, Logout)
+   - JWT-Handling (Axios-Interceptor, localStorage)
+   - Protected Routes (Dashboard, Profile)
+   - Responsive Design (Mobile-First)
+   - DSGVO-konform (Export, Delete)
 
 ---
 
@@ -101,9 +132,27 @@ npm run start:dev
 Backend läuft auf: `http://localhost:3000/api/v1`  
 Swagger Docs: `http://localhost:3000/api-docs`
 
-### 7. Testen
+### 7. Frontend starten (neues Terminal)
 
-**Registrierung**:
+```bash
+cd ../frontend
+npm install
+npm run dev
+```
+
+Frontend läuft auf: `http://localhost:3001`
+
+### 8. Testen
+
+**Web-App** (Browser):
+1. Öffne `http://localhost:3001`
+2. Klicke auf "Registrieren"
+3. Registriere einen Account (E-Mail + Passwort)
+4. Prüfe Backend-Logs für Verifizierungscode (da E-Mail-Versand noch nicht implementiert)
+5. Login mit E-Mail + Passwort
+6. Dashboard & Profil testen
+
+**API** (Curl):
 ```bash
 curl -X POST http://localhost:3000/api/v1/auth/register \
   -H "Content-Type: application/json" \
@@ -149,24 +198,32 @@ curl -X GET http://localhost:3000/api/v1/users/me \
 Cellreset/
 ├── product-spec.md           # Vollständige Product Spec (PRD)
 ├── PROJECT_OVERVIEW.md       # Diese Datei
-└── backend/
+├── SPRINT_1-2_SUMMARY.md     # Sprint-Summary
+├── backend/                  # NestJS Backend
+│   ├── src/
+│   │   ├── auth/             # Auth-Modul ✅
+│   │   ├── users/            # Users-Modul ✅
+│   │   ├── programs/         # TODO Sprint 3-4
+│   │   ├── challenges/       # TODO Sprint 3-4
+│   │   ├── content/          # TODO Sprint 7-8
+│   │   ├── quizzes/          # TODO Sprint 7-8
+│   │   ├── recipes/          # TODO Sprint 9-10
+│   │   ├── testimonials/     # TODO Sprint 11-12
+│   │   ├── community/        # TODO Sprint 11-12
+│   │   ├── notifications/    # TODO Sprint 5-6
+│   │   └── common/           # Shared (Decorators, Guards)
+│   ├── docker-compose.yml
+│   ├── setup.sh
+│   └── README.md
+└── frontend/                 # React Frontend ✅
     ├── src/
-    │   ├── auth/             # Auth-Modul ✅
-    │   ├── users/            # Users-Modul ✅
-    │   ├── programs/         # TODO Sprint 3-4
-    │   ├── challenges/       # TODO Sprint 3-4
-    │   ├── content/          # TODO Sprint 7-8
-    │   ├── quizzes/          # TODO Sprint 7-8
-    │   ├── recipes/          # TODO Sprint 9-10
-    │   ├── testimonials/     # TODO Sprint 11-12
-    │   ├── community/        # TODO Sprint 11-12
-    │   ├── notifications/    # TODO Sprint 5-6
-    │   ├── common/           # Shared (Decorators, Guards)
-    │   ├── app.module.ts
-    │   └── main.ts
-    ├── docker-compose.yml
-    ├── Dockerfile
-    ├── package.json
+    │   ├── components/       # UI-Komponenten (shadcn/ui)
+    │   ├── pages/            # Routes (Landing, Login, Register, Dashboard, Profile)
+    │   ├── services/         # API-Services (Axios)
+    │   ├── lib/              # Store (Zustand), Utils
+    │   └── App.tsx
+    ├── index.html
+    ├── vite.config.ts
     └── README.md
 ```
 
@@ -174,10 +231,12 @@ Cellreset/
 
 ## Roadmap (2-Wochen-Sprints)
 
-### Sprint 1-2: Foundation + Auth ✅ (Fertig)
-- Setup (NestJS, TypeORM, Docker)
-- Auth (Register, Login, JWT, RBAC)
-- Users (Profile, DSGVO)
+### Sprint 1-2: Foundation + Auth + Frontend ✅ (Fertig)
+- Setup (NestJS, PostgreSQL, Docker, React, Vite, Tailwind)
+- Backend: Auth (Register, Login, JWT, RBAC), Users (Profile, DSGVO)
+- Frontend: Landing, Login, Register, Dashboard, Profile
+- UI-Komponenten (Button, Card, Input, Label)
+- Responsive Design (Mobile-First)
 
 ### Sprint 3-4: Program + Challenge-Engine
 - **Entities**: Program, Phase, DayColorType, ChallengeTemplate, ChallengeInstance
