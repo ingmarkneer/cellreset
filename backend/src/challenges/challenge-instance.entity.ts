@@ -1,4 +1,5 @@
-import { Entity, PrimaryGeneratedColumn, Column } from 'typeorm';
+import { Entity, PrimaryGeneratedColumn, Column, ManyToOne, JoinColumn } from 'typeorm';
+import { User } from '../users/user.entity';
 
 @Entity('challenge_instances')
 export class ChallengeInstance {
@@ -7,4 +8,8 @@ export class ChallengeInstance {
 
   @Column({ type: 'uuid' })
   user_id: string;
+
+  @ManyToOne(() => User, (user) => user.challenges)
+  @JoinColumn({ name: 'user_id' })
+  user: User;
 }

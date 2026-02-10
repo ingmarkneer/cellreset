@@ -45,14 +45,14 @@ export class User {
 
   @Column({ nullable: true })
   @Exclude()
-  email_verification_token: string;
+  email_verification_token: string | null;
 
   @Column({ nullable: true })
   @Exclude()
-  password_reset_token: string;
+  password_reset_token: string | null;
 
   @Column({ type: 'timestamp', nullable: true })
-  password_reset_expires: Date;
+  password_reset_expires: Date | null;
 
   @CreateDateColumn()
   created_at: Date;
