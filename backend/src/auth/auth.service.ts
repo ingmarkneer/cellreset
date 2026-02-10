@@ -165,7 +165,7 @@ export class AuthService {
       where: { password_reset_token: token },
     });
 
-    if (!user || user.password_reset_expires < new Date()) {
+    if (!user || !user.password_reset_expires || user.password_reset_expires < new Date()) {
       throw new UnauthorizedException('Invalid or expired reset token');
     }
 
